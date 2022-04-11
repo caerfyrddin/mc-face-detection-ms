@@ -65,3 +65,42 @@ To run in a developement server, use:
 ```console
 $ python run.py
 ```
+
+## Request
+
+### `/face-detection/get-face-locations` (`GET`)
+
+Detect faces in an image and extract their locations.
+
+Request parameters:
+
+- `path`: path of the image file, relative to `DATA_DIR`.
+
+Example request URL: `http://localhost:49152/face-detection/get-face-locations?path=test.jpg`.
+
+Example response:
+
+```json
+{
+    "face_locations": [
+        {
+            "id": 1,
+            "rect": {
+                "bottom": 74,
+                "left": 78,
+                "right": 125,
+                "top": 26
+            }
+        },
+        {
+            "id": 2,
+            "rect": {
+                "bottom": 84,
+                "left": 220,
+                "right": 277,
+                "top": 27
+            }
+        }
+    ]
+}
+```
