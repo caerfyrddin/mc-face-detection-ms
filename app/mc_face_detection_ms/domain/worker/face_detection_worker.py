@@ -34,7 +34,7 @@ class FaceDetectionWorker:
     def transform_face_location(id: int, face_location: list) -> dict:
         return {
             "id": id,
-            "edges": {
+            "rect": {
                 "top":      face_location[0],
                 "right":    face_location[1],
                 "bottom":   face_location[2],
