@@ -86,8 +86,8 @@ Example response:
         {
             "id": 1,
             "rect": {
-                "bottom": 74,
                 "left": 78,
+                "bottom": 74,
                 "right": 125,
                 "top": 26
             }
@@ -95,8 +95,8 @@ Example response:
         {
             "id": 2,
             "rect": {
-                "bottom": 84,
                 "left": 220,
+                "bottom": 84,
                 "right": 277,
                 "top": 27
             }
