@@ -1,17 +1,13 @@
-from curses import raw
-import os, cv2, dlib, face_recognition
+import os, dlib, face_recognition
 from werkzeug.exceptions import NotFound, InternalServerError
 from config import DATA_DIR
 
 class FaceDetectionWorker:
-    
-    @staticmethod
-    def cv2_is_using_cuda() -> bool:
-        return cv2.cuda.getCudaEnabledDeviceCount() > 0
 
     @staticmethod
-    def dlib_is_using_cuda() -> bool:
-        return dlib.DLIB_USE_CUDA and dlib.cuda.get_num_devices() > 0
+    def assert_dlib_is_using_cuda() -> bool:
+        if not (dlib.DLIB_USE_CUDA and dlib.cuda.get_num_devices() > 0):
+            raise InternalServerError("dlib is not using CUDA.")
 
     def get_full_data_path(self) -> str:
         return os.path.join(DATA_DIR, self.path)
@@ -21,11 +17,7 @@ class FaceDetectionWorker:
             raise NotFound("No file with specified path was found.")
 
     def __init__(self, path: str):
-        if not (
-            FaceDetectionWorker.cv2_is_using_cuda() and
-            FaceDetectionWorker.dlib_is_using_cuda()
-        ):
-            raise InternalServerError("OpenCV or dlib are not using CUDA.")
+        FaceDetectionWorker.assert_dlib_is_using_cuda()
         self.path = path
         self.full_path = self.get_full_data_path()
         self.assert_file_exists()

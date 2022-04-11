@@ -14,7 +14,6 @@ This module requires the following packages:
 
 - Python 3.8
 - Numpy 1.22
-- OpenCV 4.5
 - Dlib 19.23
 - Face recognition 1.2.2 (https://github.com/ageitgey/face_recognition/)
 - Flask 2.1.1
