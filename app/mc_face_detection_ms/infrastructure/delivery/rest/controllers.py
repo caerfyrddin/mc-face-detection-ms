@@ -7,7 +7,7 @@ mc_face_detection_ms = Blueprint(
     url_prefix = '/face-detection/'
 )
 
-@mc_face_detection_ms.route('/get_face_locations', methods = [ 'GET' ])
+@mc_face_detection_ms.route('/get-face-locations', methods = [ 'GET' ])
 def get_face_locations():
     path = request.args['path']
     worker = FaceDetectionWorker(path)
